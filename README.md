@@ -1,36 +1,122 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Home Canvas - AI-Powered Product Visualization
+
+An interactive web application that lets you drag and drop products into scenes to create photorealistic composites using Google's Gemini AI.
+
+> **Note**: This project is adapted from [Google AI Studio's Home Canvas demo](https://aistudio.google.com/u/2/apps/bundled/home_canvas?showPreview=true&showAssistant=true), enhanced to support multiple products simultaneously and ported from Vite to Next.js.
+
+## Demo
+
+https://github.com/user-attachments/assets/multi-object-room_small.mp4
+
+## Features
+
+- 🖼️ **Scene Upload**: Upload any room or scene photo as your canvas
+- 📦 **Product Library**: Add multiple products to your palette
+- 🎯 **Drag & Drop**: Intuitively place products in your scene
+- 🤖 **AI Generation**: Gemini AI creates photorealistic composites
+- 🎨 **Multi-Product Support**: Place multiple products at once
+- 🔍 **Debug Mode**: View AI markers and prompts
+
+## Tech Stack
+
+- **Framework**: Next.js 15 with App Router
+- **UI**: React 19, Tailwind CSS
+- **AI**: Google Gemini API
+- **Image Processing**: Canvas API with optimization
+- **State Management**: useReducer with custom hooks
+- **Performance**: Dynamic imports, React.memo, image optimization
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+
+- pnpm (recommended) or npm
+- Google Gemini API key
+
+### Installation
+
+1. Clone the repository:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <your-repo-url>
+cd home-canvas-multi
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. Create a `.env.local` file in the root directory:
 
-## Learn More
+```env
+GEMINI_API_KEY=your_gemini_api_key_here
+```
 
-To learn more about Next.js, take a look at the following resources:
+4. Run the development server:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+pnpm dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-## Deploy on Vercel
+## Usage
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. **Upload a Scene**: Click to upload or drag & drop a room/scene image
+2. **Add Products**: Click "Add Product" to upload product images
+3. **Place Products**: Drag products from the palette onto the scene
+4. **Generate**: Click "Generate Scene" to create the AI composite
+5. **Iterate**: Add more products or change the scene as needed
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Project Structure
+
+```
+home-canvas-multi/
+├── app/
+│   ├── api/
+│   │   └── generate-composite/    # AI generation endpoint
+│   ├── page.tsx                   # Main page component
+│   ├── layout.tsx                 # Root layout
+│   ├── loading.tsx                # Loading state
+│   └── error.tsx                  # Error boundary
+├── components/
+│   ├── image-uploader.tsx         # Scene/product upload
+│   ├── product-palette.tsx        # Product sidebar
+│   ├── placement-overlay.tsx      # Product placement markers
+│   └── ...                        # Other UI components
+├── lib/
+│   ├── hooks/                     # Custom React hooks
+│   ├── image-utils.ts             # Image processing
+│   └── types.ts                   # TypeScript types
+└── public/
+    └── assets/                    # Default demo images
+```
+
+## Performance Optimizations
+
+- Next.js Image component for automatic optimization
+- Dynamic imports for code splitting
+- Canvas pooling for efficient image processing
+- React.memo for preventing unnecessary re-renders
+- Skeleton loaders for better perceived performance
+- Optimized state management with useReducer
+
+## Development
+
+```bash
+# Run development server
+pnpm dev
+
+# Build for production
+pnpm build
+
+# Start production server
+pnpm start
+```
+
+## License
+
+MIT

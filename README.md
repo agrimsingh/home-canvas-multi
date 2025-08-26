@@ -6,7 +6,7 @@ An interactive web application that lets you drag and drop products into scenes 
 
 ## Demo
 
-https://github.com/user-attachments/assets/multi-object-room_small.mp4
+https://github.com/user-attachments/assets/8d37d175-fcb3-436e-9ab7-b7146278713b
 
 ## Features
 
